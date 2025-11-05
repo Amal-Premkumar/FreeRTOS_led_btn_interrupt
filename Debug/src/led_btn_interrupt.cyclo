@@ -1,0 +1,8 @@
+C:/Users/Amal/RTOS_workspace/FreeRTOS/CMSIS/core/core_cm4.h:1547:22:NVIC_EnableIRQ	1
+C:/Users/Amal/RTOS_workspace/FreeRTOS/CMSIS/core/core_cm4.h:1629:22:NVIC_SetPriority	2
+../src/led_btn_interrupt.c:36:5:main	1
+../src/led_btn_interrupt.c:54:6:LED_task_hndlr	2
+../src/led_btn_interrupt.c:68:9:BTN_hndlr	3
+../src/led_btn_interrupt.c:78:13:pvrt_stup_hdwr	1
+../src/led_btn_interrupt.c:85:6:pvrt_gpio_setup	1
+../src/led_btn_interrupt.c:129:6:EXTI0_IRQHandler	2
