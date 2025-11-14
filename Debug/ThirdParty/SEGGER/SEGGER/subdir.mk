@@ -6,37 +6,25 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
 ../ThirdParty/SEGGER/SEGGER/SEGGER_RTT.c \
-../ThirdParty/SEGGER/SEGGER/SEGGER_RTT_printf.c \
 ../ThirdParty/SEGGER/SEGGER/SEGGER_SYSVIEW.c 
-
-S_UPPER_SRCS += \
-../ThirdParty/SEGGER/SEGGER/SEGGER_RTT_ASM_ARMv7M.S 
 
 OBJS += \
 ./ThirdParty/SEGGER/SEGGER/SEGGER_RTT.o \
-./ThirdParty/SEGGER/SEGGER/SEGGER_RTT_ASM_ARMv7M.o \
-./ThirdParty/SEGGER/SEGGER/SEGGER_RTT_printf.o \
 ./ThirdParty/SEGGER/SEGGER/SEGGER_SYSVIEW.o 
-
-S_UPPER_DEPS += \
-./ThirdParty/SEGGER/SEGGER/SEGGER_RTT_ASM_ARMv7M.d 
 
 C_DEPS += \
 ./ThirdParty/SEGGER/SEGGER/SEGGER_RTT.d \
-./ThirdParty/SEGGER/SEGGER/SEGGER_RTT_printf.d \
 ./ThirdParty/SEGGER/SEGGER/SEGGER_SYSVIEW.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
 ThirdParty/SEGGER/SEGGER/%.o ThirdParty/SEGGER/SEGGER/%.su ThirdParty/SEGGER/SEGGER/%.cyclo: ../ThirdParty/SEGGER/SEGGER/%.c ThirdParty/SEGGER/SEGGER/subdir.mk
-	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DSTM32F407xx -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -c -I"C:/Users/Amal/RTOS_workspace/hai/ThirdParty/SEGGER/OS" -I"C:/Users/Amal/RTOS_workspace/hai/config" -I"C:/Users/Amal/RTOS_workspace/hai/ThirdParty/SEGGER" -I"C:/Users/Amal/RTOS_workspace/hai/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F" -I"C:/Users/Amal/RTOS_workspace/hai/ThirdParty/FreeRTOS" -I"C:/Users/Amal/RTOS_workspace/hai/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/Amal/RTOS_workspace/hai/Drivers/CMSIS/Include" -I"C:/Users/Amal/RTOS_workspace/hai/inc" -I"C:/Users/Amal/RTOS_workspace/hai/ThirdParty/FreeRTOS/include" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
-ThirdParty/SEGGER/SEGGER/%.o: ../ThirdParty/SEGGER/SEGGER/%.S ThirdParty/SEGGER/SEGGER/subdir.mk
-	arm-none-eabi-gcc -mcpu=cortex-m4 -g3 -DDEBUG -DUSE_HAL_DRIVER -DSTM32F407xx -c -I"C:/Users/Amal/RTOS_workspace/hai/Drivers/CMSIS" -I"C:/Users/Amal/RTOS_workspace/hai/Drivers/CMSIS/Device/ST/STM32F4xx/Include" -I"C:/Users/Amal/RTOS_workspace/hai/inc" -I"C:/Users/Amal/RTOS_workspace/hai/ThirdParty/FreeRTOS/include" -x assembler-with-cpp -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@" "$<"
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DDEBUG -DUSE_STDPERIPH_DRIVER -DSTM32F40_41xxx -DSTM32F407xx -DSTM32 -DSTM32F407G_DISC1 -DSTM32F4 -DSTM32F407VGTx -c -I"C:/Users/Amal/RTOS_workspace/FreeRTOS/CMSIS/device" -I"C:/Users/Amal/RTOS_workspace/FreeRTOS/CMSIS/core" -I"C:/Users/Amal/RTOS_workspace/FreeRTOS/STM32_FreeRTOS_StdPeriph_Driver/inc" -I"C:/Users/Amal/RTOS_workspace/FreeRTOS/config" -I"C:/Users/Amal/RTOS_workspace/FreeRTOS/ThirdParty/FreeRTOS/portable/GCC/ARM_CM4F" -I"C:/Users/Amal/RTOS_workspace/FreeRTOS/inc" -I"C:/Users/Amal/RTOS_workspace/FreeRTOS/ThirdParty/FreeRTOS/include" -I"C:/Users/Amal/RTOS_workspace/FreeRTOS/ThirdParty/SEGGER/Config" -I"C:/Users/Amal/RTOS_workspace/FreeRTOS/ThirdParty/SEGGER/OS" -I"C:/Users/Amal/RTOS_workspace/FreeRTOS/ThirdParty/SEGGER/SEGGER" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 
 clean: clean-ThirdParty-2f-SEGGER-2f-SEGGER
 
 clean-ThirdParty-2f-SEGGER-2f-SEGGER:
-	-$(RM) ./ThirdParty/SEGGER/SEGGER/SEGGER_RTT.cyclo ./ThirdParty/SEGGER/SEGGER/SEGGER_RTT.d ./ThirdParty/SEGGER/SEGGER/SEGGER_RTT.o ./ThirdParty/SEGGER/SEGGER/SEGGER_RTT.su ./ThirdParty/SEGGER/SEGGER/SEGGER_RTT_ASM_ARMv7M.d ./ThirdParty/SEGGER/SEGGER/SEGGER_RTT_ASM_ARMv7M.o ./ThirdParty/SEGGER/SEGGER/SEGGER_RTT_printf.cyclo ./ThirdParty/SEGGER/SEGGER/SEGGER_RTT_printf.d ./ThirdParty/SEGGER/SEGGER/SEGGER_RTT_printf.o ./ThirdParty/SEGGER/SEGGER/SEGGER_RTT_printf.su ./ThirdParty/SEGGER/SEGGER/SEGGER_SYSVIEW.cyclo ./ThirdParty/SEGGER/SEGGER/SEGGER_SYSVIEW.d ./ThirdParty/SEGGER/SEGGER/SEGGER_SYSVIEW.o ./ThirdParty/SEGGER/SEGGER/SEGGER_SYSVIEW.su
+	-$(RM) ./ThirdParty/SEGGER/SEGGER/SEGGER_RTT.cyclo ./ThirdParty/SEGGER/SEGGER/SEGGER_RTT.d ./ThirdParty/SEGGER/SEGGER/SEGGER_RTT.o ./ThirdParty/SEGGER/SEGGER/SEGGER_RTT.su ./ThirdParty/SEGGER/SEGGER/SEGGER_SYSVIEW.cyclo ./ThirdParty/SEGGER/SEGGER/SEGGER_SYSVIEW.d ./ThirdParty/SEGGER/SEGGER/SEGGER_SYSVIEW.o ./ThirdParty/SEGGER/SEGGER/SEGGER_SYSVIEW.su
 
 .PHONY: clean-ThirdParty-2f-SEGGER-2f-SEGGER
 

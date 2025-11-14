@@ -589,6 +589,7 @@ void xPortSysTickHandler( void )
 		else
 		{
 			traceISR_EXIT();
+			vTaskSwitchContext();
 		}
     }
     portENABLE_INTERRUPTS();

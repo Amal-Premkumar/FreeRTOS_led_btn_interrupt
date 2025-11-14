@@ -128,10 +128,12 @@ void pvrt_gpio_setup(void){
 
 void EXTI0_IRQHandler(void){
 
+	traceISR_ENTER();
 	 if (BTN_hndlr())   // call the debounce function
 	       {
 	        BTN_pressed = !BTN_pressed;  // toggle state
 	       }
 	 //clear the interrupt pending bit of exti line 0
 	 EXTI_ClearITPendingBit(EXTI_Line0);
+	 traceISR_EXIT();
 }
